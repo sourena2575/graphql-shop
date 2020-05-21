@@ -1,8 +1,8 @@
 {
   "name": "4",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "shop",
+  "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
     "start": "node server.js",
