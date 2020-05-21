@@ -3,7 +3,7 @@ const config = require("config");
 const { ApolloServer } = require("apollo-server");
 const typeDefs = require("./graphql/type/typeDefs");
 const resolvers = require("./graphql/resolvers");
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 const path = require("path");
 
 // initial server
@@ -21,7 +21,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    return server.listen({ port: PORT });
+    return server.listen({ port });
   })
   .then((res) => {
     console.log(`server on ${res.url} connected to MDB`);
