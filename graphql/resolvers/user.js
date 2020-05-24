@@ -81,7 +81,11 @@ module.exports = {
           password: hashed,
           createdAt: new Date().toDateString(),
         });
+
         const res = await newUser.save();
+        context.pubsub.publish("NEW_USER", {
+          signupUser: res,
+        });
         const token = tokenGenerator(res);
         return {
           ...res._doc,
@@ -143,6 +147,13 @@ module.exports = {
       } catch (error) {
         console.log(error);
       }
+    },
+  },
+  Subscription: {
+    signupUser: {
+      subscribe: (_, __, { pubsub }) => {
+        return pubsub.asyncIterator("NEW_USER");
+      },
     },
   },
 };

@@ -9,7 +9,6 @@ import NavbarFile from "./components/basic/NavbarFile";
 import Signup from "./components/authentication/Signup";
 import Login from "./components/authentication/Login";
 import ProductList from "./components/product/ProductList";
-import ContextProvider from "./components/context/ContextProvider";
 import AddProduct from "./components/product/AddProduct";
 import CartFile from "./components/product/CartFile";
 import OrderFile from "./components/orders/OrderFile";
@@ -37,20 +36,18 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <ContextProvider>
-        <BrowserRouter>
-          <NavbarFile />
-          <Switch>
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/products" component={ProductList} />
-            <Route exact path="/products/add" component={AddProduct} />
-            <Route exact path="/cart" component={CartFile} />
-            <Route exact path="/orders" component={OrderFile} />
-            <Route exact path="/orders/:id" component={OrderDetails} />
-          </Switch>
-        </BrowserRouter>
-      </ContextProvider>
+      <BrowserRouter>
+        <NavbarFile />
+        <Switch>
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/products" component={ProductList} />
+          <Route exact path="/products/add" component={AddProduct} />
+          <Route exact path="/cart" component={CartFile} />
+          <Route exact path="/orders" component={OrderFile} />
+          <Route exact path="/orders/:id" component={OrderDetails} />
+        </Switch>
+      </BrowserRouter>
     </ApolloProvider>
   );
 }

@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
-import { ContextBase } from "../context/ContextProvider";
-const CommentButton = () => {
-  const { dispatch } = useContext(ContextBase);
+import React from "react";
 
+const CommentButton = ({ setcommentForm, commentForm }) => {
   return (
     <button
       className=" pulse btn-med indigo darken-1 btn-floating my-2"
-      onClick={() => dispatch({ type: "COMMENT_FORM" })}
+      onClick={() => setcommentForm(!commentForm)}
     >
       <i className="material-icons">comment</i>
     </button>

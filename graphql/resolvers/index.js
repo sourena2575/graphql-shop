@@ -20,7 +20,7 @@ module.exports = {
     ...product.Mutation,
     ...order.Mutation,
   },
-  // Subscription: {
-  //  ...postResolvers.Subscription,
-  // },
+  Subscription: {
+    ...user.Subscription,
+  },
 };

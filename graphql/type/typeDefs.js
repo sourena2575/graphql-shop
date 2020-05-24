@@ -124,5 +124,9 @@ const typeDefs = gql`
     sendCart(orderId: ID!): Order!
     upload(file: Upload!): File!
   }
+  type Subscription {
+    signupUser: User!
+    newOrder: Order!
+  }
 `;
 module.exports = typeDefs;

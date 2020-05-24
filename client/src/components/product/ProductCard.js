@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import CommentButton from "../Buttons/Comment";
 import CommentForm from "../form/CommentForm";
 import LikeButton from "../Buttons/Like";
-import { ContextBase } from "../context/ContextProvider";
 import AddCart from "../Buttons/AddCart";
 import MoreInfo from "../Buttons/MoreInfo";
 import GoCart from "../Buttons/GoCart";
@@ -12,7 +11,7 @@ import CommentList from "../lists/CommentList";
 
 const user = JSON.parse(localStorage.getItem("user"));
 const ProductCard = ({ item }) => {
-  const { state } = useContext(ContextBase);
+  const [commentForm, setcommentForm] = useState(true);
 
   return (
     <div>
@@ -41,17 +40,26 @@ const ProductCard = ({ item }) => {
               {user && user.email === "sourena@gmail.com" && (
                 <DeleteProduct item={item} />
               )}
-              <CommentButton />
+              <CommentButton
+                commentForm={commentForm}
+                setcommentForm={setcommentForm}
+              />
               <LikeButton item={item} user={user} />
             </div>
             <ProductInfo item={item} />
           </div>
           <div className="row">
-            <div className="col-12" hidden={state.commentForm}>
+            <div className="col-12" hidden={commentForm}>
               <CommentForm id={item.id} />
             </div>
             <div className="col-12">
-              {user && <CommentList item={item} user={user} />}
+              {user && (
+                <CommentList
+                  item={item}
+                  user={user}
+                  commentForm={commentForm}
+                />
+              )}
             </div>
           </div>
         </div>

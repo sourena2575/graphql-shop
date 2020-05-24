@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import { ContextBase } from "../context/ContextProvider";
+import React from "react";
 import moment from "moment";
 import { useMutation } from "@apollo/react-hooks";
 import { deleteCommentMutattion, getProducts } from "../queries/Product";
 import PreloaderFile from "../basic/PreloaderFile";
-const CommentList = ({ item, user }) => {
-  const { state } = useContext(ContextBase);
+const CommentList = ({ item, user, commentForm }) => {
   const [deleteComment, { loading }] = useMutation(deleteCommentMutattion, {
     update(proxy, result) {
       console.log(result);
@@ -15,7 +13,7 @@ const CommentList = ({ item, user }) => {
     },
   });
   return (
-    <div className="" hidden={state.commentForm}>
+    <div className="" hidden={commentForm}>
       {item.comments.map((it) => {
         return (
           <div className=" mx-auto mt-3 border-bottom" key={it.id}>

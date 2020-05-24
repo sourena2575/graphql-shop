@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
-import { ContextBase } from "../context/ContextProvider";
+import React, { useState } from "react";
+
 import { createCommentMutation, getProducts } from "../queries/Product";
 import { useMutation } from "@apollo/react-hooks";
 import PreloaderFile from "../basic/PreloaderFile";
 const CommentForm = ({ id }) => {
-  const { dispatch } = useContext(ContextBase);
   const [body, setbody] = useState("");
   const [createComment, { loading }] = useMutation(createCommentMutation, {
     update(proxy, result) {

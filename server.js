@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 const config = require("config");
-const { ApolloServer } = require("apollo-server");
+const { ApolloServer, PubSub } = require("apollo-server");
 const typeDefs = require("./graphql/type/typeDefs");
 const resolvers = require("./graphql/resolvers");
 const port = process.env.PORT || 5000;
 const path = require("path");
-
+const pubsub = new PubSub();
 // initial server
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({ req }) => ({ req }),
+  context: ({ req, res }) => ({ req, res, pubsub }),
 });
 // connect to mdb
 const uri = config.get("mdb");
