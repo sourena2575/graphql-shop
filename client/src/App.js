@@ -16,7 +16,7 @@ import OrderDetails from "./components/orders/OrderDetails";
 
 const user = JSON.parse(localStorage.getItem("user"));
 const httpLink = createHttpLink({
-  uri: "http://localhost:5000",
+  uri: "https://amir19.herokuapp.com/",
 });
 const authLink = setContext(() => {
   if (user) {

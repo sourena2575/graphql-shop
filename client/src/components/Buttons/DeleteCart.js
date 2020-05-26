@@ -20,6 +20,7 @@ const DeleteCart = ({ item, user }) => {
   } else {
     return (
       <a
+        href="#!"
         onClick={() => {
           deleteFromCart({
             variables: { productId: item.id, userId: user.id },

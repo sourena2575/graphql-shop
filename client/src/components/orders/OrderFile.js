@@ -4,7 +4,7 @@ import { getOrders } from "../queries/Order";
 import OrderItem from "./OrderItem";
 import PreloaderFile from "../basic/PreloaderFile";
 const OrderFile = () => {
-  const { loading, error, data } = useQuery(getOrders);
+  const { loading, data } = useQuery(getOrders);
   if (loading) {
     return (
       <div className="d-flex my-5 justify-content-center align-items-center">

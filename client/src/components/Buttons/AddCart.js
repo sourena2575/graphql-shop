@@ -4,11 +4,11 @@ import { addToCartMutation, getCart } from "../queries/User";
 import PreloaderFile from "../basic/PreloaderFile";
 
 const AddCart = ({ item, user }) => {
-  const { _, error, data } = useQuery(getCart, {
+  const { data } = useQuery(getCart, {
     variables: { userId: user.id },
   });
   const [addToCart, { loading }] = useMutation(addToCartMutation, {
-    update(proxy, result) {
+    update(_, result) {
       console.log(result);
     },
     onError(err) {

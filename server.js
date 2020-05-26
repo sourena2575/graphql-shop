@@ -4,10 +4,10 @@ const { ApolloServer, PubSub } = require("apollo-server");
 const typeDefs = require("./graphql/type/typeDefs");
 const resolvers = require("./graphql/resolvers");
 const port = process.env.PORT || 5000;
-const path = require("path");
 const pubsub = new PubSub();
 // initial server
 const server = new ApolloServer({
+  cors: true,
   typeDefs,
   resolvers,
   context: ({ req, res }) => ({ req, res, pubsub }),
@@ -29,11 +29,3 @@ mongoose
   .catch((er) => {
     console.error(er);
   });
-
-// serve static asset if in production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}

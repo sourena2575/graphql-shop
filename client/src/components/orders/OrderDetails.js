@@ -5,7 +5,7 @@ import OrderProductList from "./OrderProductList";
 import PreloaderFile from "../basic/PreloaderFile";
 const OrderDetails = (props) => {
   let id = props.match.params.id;
-  const { loading, error, data } = useQuery(getOrder, {
+  const { loading, data } = useQuery(getOrder, {
     variables: { orderId: id },
   });
   if (loading) {

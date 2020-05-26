@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import CommentButton from "../Buttons/Comment";
 import CommentForm from "../form/CommentForm";
 import LikeButton from "../Buttons/Like";

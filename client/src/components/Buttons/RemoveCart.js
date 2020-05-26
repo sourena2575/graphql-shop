@@ -20,6 +20,7 @@ const RemoveCart = ({ productId, orderId }) => {
   } else {
     return (
       <a
+        href="#!"
         onClick={() => {
           removeCart({
             variables: { productId, orderId },

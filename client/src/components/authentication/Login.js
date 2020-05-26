@@ -7,8 +7,8 @@ import PreloaderFile from "../basic/PreloaderFile";
 const Login = () => {
   const [msg, setmsg] = useState(null);
   const [loader, setloader] = useState(null);
-  const [login, { loading }] = useMutation(loginMutation, {
-    update(proxy, result) {
+  const [login] = useMutation(loginMutation, {
+    update(_, result) {
       localStorage.setItem("user", JSON.stringify(result.data.login));
       window.location = "/";
     },
